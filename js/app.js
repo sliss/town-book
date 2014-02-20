@@ -12,7 +12,7 @@ townBookApp.config(['$routeProvider',
         templateUrl: 'partials/town-list.html',
         controller: 'TownListCtrl'
       }).
-      when('/new-towns', {
+      when('/new-towns/:townSlug', {
         templateUrl: 'partials/town-detail.html',
         controller: 'TownDetailCtrl'
       }).

@@ -27,9 +27,9 @@
 		<ul ng-switch-when="name" class="towns">
 			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:false">
 				<p class="dynamic">
-            		<span class="town_name"><a href="new-towns/{{town.slug}}">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.county}} County</span>
+            		<span class="town_name"><a href="#/new-towns/{{town.slug}}">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.county}} County</span>
         		</p>
-            
+
           </li>
         </ul>
         
