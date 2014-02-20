@@ -1,16 +1,18 @@
-'use strict';
-
-/* Controllers */
-
-var townBookApp = angular.module('townBookApp', []);
+var townBookControllers = angular.module('townBookControllers', []);
 
 
+townBookControllers.controller('TownListCtrl', ['$scope', '$http',
+  function ($scope, $http) {
+    $http.get('towns/towns.json').success(function(data) {
+      $scope.towns = data;
+    });
+ 
+    $scope.orderProp = 'name';
+  }]);
 
-townBookApp.controller('TownListCtrl', function($scope, $http) {
-  $scope.orderProp = 'name';
-  $scope.datum = 'established';
-  
-  $http.get('towns/towns.json').success(function(data) {
-    $scope.towns = data;
-  });
-});
+townBookControllers.controller('TownDetailCtrl', ['$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+    $http.get('townJSON/' + $routeParams.townSlug + '.json').success(function(data) {
+      $scope.town = data;
+    });
+  }]);

@@ -5,100 +5,14 @@
   <title>Massachusetts Town Compendium</title>
   
   <link rel="stylesheet" href="index_style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="js/angular.js"></script>
+  <script src="js/angular-route.js"></script>
+  <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
 </head>
-<body ng-controller="TownListCtrl">
-<div id="heading"><a style="display:block;text-align:center;margin-bottom:15px;" href="http://stevenliss.com"><br/><br/><img src="sbl.jpg"></a>Massachusetts Town Compendium<div>
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span2">
-        <!--Sidebar content-->
-	<div class="bar">
-        <input ng-model="query" placeholder="Search by town name or county">
-    </div>
-        Sort by:
-        <select class="select_menu" ng-model="orderProp">
-          <option value="name">Name</option>
-          <option value="population">Population</option>
-          <option value="percent_registered_republicans">% Registered Republicans</option>
-          <option value="percent_registered_unenrolled">% Unenrolled</option>
-          <option value="unemployment_percentage">Unemployment</option>
-          <option value="local_aid_2013">Local Aid 2013</option>
-          <option value="delta_local_aid_percentage">Local Aid Decrease '08-'13</option>
-        </select>
+<body>
 
-      </div>
-      
-     
-      
-      <div class="span10">
-        <!--Body content-->
-        <div ng-switch="orderProp">
-		<ul ng-switch-when="name" class="towns">
-			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:false">
-				<p class="dynamic">
-            		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.county}} County</span>
-        		</p>
-            
-          </li>
-        </ul>
-        
-        <ul ng-switch-when="population" class="towns">
-			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
-				<p class="dynamic">
-            		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.population | number}} </span>
-        		</p>
-          </li>
-        </ul>
-        
-        <ul ng-switch-when="unemployment_percentage" class="towns">
-			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
-				<p class="dynamic">
-            		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.unemployment_percentage | number:1}}% </span>
-        		</p>
-          </li>
-        </ul>
-        
-        <ul ng-switch-when="delta_local_aid_percentage" class="towns">
-			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:false">
-				<p class="dynamic">
-            		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.delta_local_aid_percentage | number:1}}% </span>
-        		</p>
-          </li>
-        </ul>
-        
-        <ul ng-switch-when="local_aid_2013" class="towns">
-			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
-				<p class="dynamic">
-            		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">${{town.local_aid_2013 | number}} </span>
-        		</p>
-          </li>
-        </ul>
-        
-        <ul ng-switch-when="percent_registered_republicans" class="towns">
-			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
-				<p class="dynamic">
-            		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.percent_registered_republicans | number:1}}% </span>
-        		</p>
-          </li>
-        </ul>
-        
-        <ul ng-switch-when="percent_registered_unenrolled" class="towns">
-			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
-				<p class="dynamic">
-            		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.percent_registered_unenrolled | number:1}}% </span>
-        		</p>
-          </li>
-        </ul>
-        
-        </div>
-        
-       
-      </div>
-    </div>
-  </div>
-
+	<div ng-view></div>
+	
 </body>
 </html>
