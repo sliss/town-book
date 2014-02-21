@@ -97,5 +97,18 @@
  </table>
  
  <p>Local government: {{town.gov_type}}</p>
+ 
+ <h2>Comments</h2>
+  
+<textarea rows="4" cols="50" name="server" id="saveServer" > 
+{{comment}}
+</textarea>
+<button onclick="storeComment()" type="button" value="Save">Save</button>
+<p id="hiddenSlug">{{town.slug}}</p>
+
+
+
+	
+  
  </div> <!-- end #container-->
  </div>

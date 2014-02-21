@@ -15,4 +15,7 @@ townBookControllers.controller('TownDetailCtrl', ['$scope', '$routeParams', '$ht
     $http.get('townJSON/' + $routeParams.townSlug + '.json').success(function(data) {
       $scope.town = data;
     });
+    
+    $scope.comment = localStorage.getItem($routeParams.townSlug)
+
   }]);
