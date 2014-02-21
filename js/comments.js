@@ -14,3 +14,8 @@ function storeComment() {
 	localStorage.setItem(slug.innerHTML,input.value);
 
 }
+
+function showComment() {
+	var slug = document.getElementById("hiddenSlug"); 
+	document.write(localStorage.getItem(slug.innerHTML))
+}

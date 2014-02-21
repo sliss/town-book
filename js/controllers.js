@@ -8,14 +8,19 @@ townBookControllers.controller('TownListCtrl', ['$scope', '$http',
     });
  
     $scope.orderProp = 'name';
+    
   }]);
 
 townBookControllers.controller('TownDetailCtrl', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
-    $http.get('townJSON/' + $routeParams.townSlug + '.json').success(function(data) {
+  	var slug = $routeParams.townSlug;
+    slug = slug.replace(".html","");
+    $http.get('townJSON/' + slug + '.json').success(function(data) {
       $scope.town = data;
     });
-    
-    $scope.comment = localStorage.getItem($routeParams.townSlug)
+    if(localStorage.getItem(slug))
+    	$scope.comment = localStorage.getItem(slug);
+    else
+    	$scope.comment = '';
 
   }]);
