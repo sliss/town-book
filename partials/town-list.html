@@ -1,4 +1,7 @@
-<div id="heading"><a style="display:block;text-align:center;margin-bottom:15px;" href="http://stevenliss.com"><br/><br/><img src="sbl.jpg"></a>Massachusetts Town Compendium<div>
+<div id="heading">
+	<br/>
+	<a href="http://stevenliss.com"><img src="sbl.jpg"></a>
+	<br/><br/>Massachusetts Town Compendium</div>
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span2">
@@ -21,10 +24,10 @@
       
      
       
-      <div class="span10">
+      <div class="big_list">
         <!--Body content-->
         <div ng-switch="orderProp">
-		<ul ng-switch-when="name" class="towns">
+		<ul ng-switch-when="name" >
 			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:false">
 				<p class="dynamic">
             		<span class="town_name"><a href="#/new-towns/{{town.slug}}">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.county}} County</span>
@@ -33,7 +36,7 @@
           </li>
         </ul>
         
-        <ul ng-switch-when="population" class="towns">
+        <ul ng-switch-when="population" >
 			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
 				<p class="dynamic">
             		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.population | number}} </span>
@@ -41,7 +44,7 @@
           </li>
         </ul>
         
-        <ul ng-switch-when="unemployment_percentage" class="towns">
+        <ul ng-switch-when="unemployment_percentage" >
 			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
 				<p class="dynamic">
             		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.unemployment_percentage | number:1}}% </span>
@@ -49,7 +52,7 @@
           </li>
         </ul>
         
-        <ul ng-switch-when="delta_local_aid_percentage" class="towns">
+        <ul ng-switch-when="delta_local_aid_percentage" >
 			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:false">
 				<p class="dynamic">
             		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.delta_local_aid_percentage | number:1}}% </span>
@@ -57,7 +60,7 @@
           </li>
         </ul>
         
-        <ul ng-switch-when="local_aid_2013" class="towns">
+        <ul ng-switch-when="local_aid_2013" >
 			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
 				<p class="dynamic">
             		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">${{town.local_aid_2013 | number}} </span>
@@ -65,7 +68,7 @@
           </li>
         </ul>
         
-        <ul ng-switch-when="percent_registered_republicans" class="towns">
+        <ul ng-switch-when="percent_registered_republicans" >
 			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
 				<p class="dynamic">
             		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.percent_registered_republicans | number:1}}% </span>
@@ -73,7 +76,7 @@
           </li>
         </ul>
         
-        <ul ng-switch-when="percent_registered_unenrolled" class="towns">
+        <ul ng-switch-when="percent_registered_unenrolled" >
 			<li ng-repeat="town in towns | filter:query | orderBy:orderProp:true">
 				<p class="dynamic">
             		<span class="town_name"><a href="towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.percent_registered_unenrolled | number:1}}% </span>

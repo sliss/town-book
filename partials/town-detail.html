@@ -1,5 +1,101 @@
-<img ng-src="{{town.image_link}}" class="town">
+ <div id="detail_page_container">
+ <div id="detail_container">
+   <span id="index_link"><a href="/town-book">List of towns</a></span>
+	 <img class="town_image" ng-src="{{town.image_link}}">
 
-<h1>{{town.name}}</h1>
+ <h1>{{town.name | uppercase}}</h1>
+ <div id="local_container">
+	 <br/>
+	 <p>County: {{town.county}}</p>
+	 <p>Population: {{town.population | number}}</p>
+	 <p>Established: {{town.established | number}} ({{2014 - town.established}} years old)</p>
+ </div>
+ 
+ <br/><br/><br/><br/><br/>
+ 
+ <h2>Party Enrollment Breakdown (2012)</h2>
+ 
+ <table>
+	 <tr>
+		 <th>
+		 </th>
+		 <th>Total</th>
+		 <th>Republican</th>
+		 <th>Democrat</th>
+		 <th>Green-Rainbow</th>
+		 <th>Unenrolled</th>
+	 </tr>
+	 <tr>
+		 <td>Enrolled</td>
+		 <td>{{town.registered_voters["Total"] | number}}</td>
+		 <td>{{town.registered_voters["Republican"] | number}}</td>
+		 <td>{{town.registered_voters["Democrat"] | number}}</td>
+		 <td>{{town.registered_voters["Green-Rainbow"] | number}}</td>
+		 <td>{{town.registered_voters["Unenrolled"] | number}}</td>
+	 </tr>
+	 <tr>
+		 <td>%</td>
+		 <td>   -   </td>
+		 <td>{{town.registered_percentages["% Republican"] | number:1}}%</td>
+		 <td>{{town.registered_percentages["% Democrat"] | number:1}}%</td>
+		 <td>{{town.registered_percentages["% Green-Rainbow"] | number:1}}%</td>
+		 <td>{{town.registered_percentages["% Unenrolled"] | number:1}}%</td>
 
-<p>TBD: detail view for {{town.name}} {{town.population}}</p>
+
+	 </tr>
+ </table>
+ 
+ <h2>2010 Election Results</h2>
+ <table>
+	 <tr>
+		 <th></th>
+		 <th>Votes</th>
+		 <th>Baker</th>
+		 <th>Patrick</th>
+		 <th>Cahill</th>
+		 <th>Stein</th>
+	 </tr>
+	 <tr>
+		 <td>Enrolled</td>
+		 <td>{{town.votes["Total"] | number}}</td>
+		 <td>{{town.votes["Baker"] | number}}</td>
+		 <td>{{town.votes["Patrick"] | number}}</td>
+		 <td>{{town.votes["Cahill"] | number}}</td>
+		 <td>{{town.votes["Stein"] | number}}</td> 
+	 </tr>
+	 <tr>
+		 <td>%</td>
+		 <td>   -   </td>
+		 <td>{{town.vote_percentages["% Baker"] | number:1}}%</td>
+		 <td>{{town.vote_percentages["% Patrick"] | number:1}}%</td>
+		 <td>{{town.vote_percentages["% Cahill"] | number:1}}%</td>
+		 <td>{{town.vote_percentages["% Stein"] | number:1}}%</td>
+
+	 </tr>
+ </table>
+ 
+ <h2>Unemployment</h2>
+ <p>Dec. 2013 unemployment rate: {{town.unemployment_percentage | number:1}}%  (MA average is 6.7%)</p>
+ <p>Individuals unemployed: {{town.unemployment_total | number}}</td>
+ 
+ <h2>Local Aid</h2>
+ <table>
+	 <tr>
+		 <th>FY 08</th>
+		 <th>FY 13</th>
+		 <th>$ Decrease</th>
+		 <th>% Decrease</th>
+		 <th>Decrease per capita</th>
+	 </tr>
+	 <tr>
+		 <td>${{town.local_aid_2008 | number:0}}</td>
+		 <td>${{town.local_aid_2013 | number:0}}</td>
+		 <td>-${{-1 * town.delta_local_aid | number:0}}</td>
+		 <td>{{town.delta_local_aid_percentage | number:1}}%</td>
+		 <td>-${{-1 * town.delta_local_aid_per_capita | number:2}}</td>
+	 </tr>
+ </table>
+ 
+ <p>Local government: {{town.gov_type}}</p>
+ </div> <!-- end #container-->
+ </div>

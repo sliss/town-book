@@ -14,7 +14,7 @@ townBookApp.config(['$routeProvider',
       }).
       when('/new-towns/:townSlug', {
         templateUrl: 'partials/town-detail.html',
-        controller: 'TownDetailCtrl'
+        controller: 'TownDetailCtrl'          
       }).
       otherwise({
         redirectTo: '/'
