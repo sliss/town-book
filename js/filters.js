@@ -11,7 +11,6 @@ townBookFilters.filter('searchName', function() {
 
 		searchString = searchString.toLowerCase();
 
-		// Using the forEach helper method to loop through the array
 		angular.forEach(arr, function(town){
 
 			if(town.name.toLowerCase().indexOf(searchString) !== -1){
@@ -30,21 +29,18 @@ townBookFilters.filter('searchStorage', function() {
 		if(!searchString){
 			return arr;
 		}
-
+		
 		var result = [];
 
 		searchString = searchString.toLowerCase();
-
-		// Using the forEach helper method to loop through the array
-		angular.forEach(arr, function(town){
-		if(localStorage.getItem(town.slug)) {
-			if(localStorage.getItem(town.slug).toLowerCase().indexOf(searchString) !== -1){
-				result.push(town);
+		
+		
+		angular.forEach(arr, function(key){
+			var s = localStorage.getItem(key);
+			if(s.indexOf(searchString) !== -1){
+				result.push(key);
 			}
-		}	
-
 		});
-
 		return result;
-  };
+	};
 });

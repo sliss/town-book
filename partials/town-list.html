@@ -86,9 +86,9 @@
         </ul>
         
         <ul ng-switch-when="comments" >
-			<li ng-repeat="town in towns | searchStorage:query | orderBy:'name':false">
+			<li ng-repeat="key in keys | searchStorage:query | orderBy:'name':false">
 				<p class="dynamic">
-            		<span class="town_name"><a href="#/towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span><span class="stat_display"></span>
+            		<span class="town_name"><a href="#/towns/{{key}}.html">{{key | uppercase}}</a></span><span class="stat_display"></span>
         		</p>
           </li>
         </ul>

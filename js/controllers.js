@@ -8,7 +8,14 @@ townBookControllers.controller('TownListCtrl', ['$scope', '$http',
     });
  
     $scope.orderProp = 'name';
-    
+
+	$scope.keys = [];
+	$scope.comments = [];
+	
+    for (var i = 0; i < localStorage.length; i++) {
+    	$scope.comments.push(localStorage.getItem(localStorage.key(i)));   
+    	$scope.keys.push(localStorage.key(i));
+    }	 
   }]);
 
 townBookControllers.controller('TownDetailCtrl', ['$scope', '$routeParams', '$http',
