@@ -1,11 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" ng-app="townBookApp">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Massachusetts Town Compendium</title>
   
   <link rel="stylesheet" href="index_style.css">
   <link rel="stylesheet" href="css/town_style.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 
   <script src="js/angular.js"></script>
   <script src="js/angular-route.js"></script>
@@ -17,7 +22,7 @@
 </head>
 <body>
 
-	<div ng-view></div>
+	<div ng-view class="container"></div>
 	
 </body>
 </html>

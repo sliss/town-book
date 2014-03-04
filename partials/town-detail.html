@@ -1,21 +1,30 @@
- <div id="detail_page_container">
- <div id="detail_container">
+ <div class = "row">
+ <div class="col-sm-12">
    <span id="index_link"><a href="/town-book">List of towns</a></span>
-	 <img class="town_image" ng-src="{{town.image_link}}">
 
- <h1>{{town.name | uppercase}}</h1>
+
+ </div>
+  </div>
+ <div class = "row">
+ 	<div class="col-sm-6">
+ 	 <h1>{{town.name | uppercase}}</h1>
  <div id="local_container">
 	 <br/>
 	 <p>County: {{town.county}}</p>
 	 <p>Population: {{town.population | number}}</p>
+	 <p>Local government: {{town.gov_type}}</p>
 	 <p>Established: {{town.established | number}} ({{2014 - town.established}} years old)</p>
  </div>
- 
+ </div>
+ <div class="col-sm-6">
+ 	<img ng-src="{{town.image_link}}">
+ </div>
+ </div><!-- end row -->
  <br/><br/><br/><br/><br/>
  
  <h2>Party Enrollment Breakdown (2012)</h2>
  
- <table>
+<table class="table table-bordered"> 
 	 <tr>
 		 <th>
 		 </th>
@@ -46,7 +55,7 @@
  </table>
  
  <h2>2010 Election Results</h2>
- <table>
+ <table class="table table-bordered"> 
 	 <tr>
 		 <th></th>
 		 <th>Votes</th>
@@ -79,7 +88,7 @@
  <p>Individuals unemployed: {{town.unemployment_total | number}}</td>
  
  <h2>Local Aid</h2>
- <table>
+ <table class="table table-bordered"> 
 	 <tr>
 		 <th>FY 08</th>
 		 <th>FY 13</th>
@@ -96,19 +105,15 @@
 	 </tr>
  </table>
  
- <p>Local government: {{town.gov_type}}</p>
- 
  <h2>Comments</h2>
   
-<textarea rows="4" cols="50" name="server" id="saveServer" > 
+<textarea class="form-control" rows="4" cols="50" name="server" id="saveServer" > 
 {{comment}}
 </textarea>
-<button onclick="storeComment()" type="button" value="Save">Save</button>
+<button class="btn btn-default" onclick="storeComment()" type="button" value="Save">Save</button>
 <p id="hiddenSlug">{{town.slug}}</p>
 
 
 
 	
   
- </div> <!-- end #container-->
- </div>
