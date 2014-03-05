@@ -37,3 +37,8 @@ table {
 #hiddenSlug {
 	display:none;
 }
+
+svg{background-color:#E1E9FC;}
+
+.subunit { fill: #0F2787; }
+.subunit:hover{ fill: #CC1821; }

@@ -1,7 +1,8 @@
 var townBookApp = angular.module('townBookApp', [
 	'ngRoute',
 	'townBookControllers',
-	'townBookFilters'
+	'townBookFilters',
+  'townBookDirectives'
 
 ]);
 
