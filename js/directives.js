@@ -2,11 +2,18 @@ var townBookDirectives = angular.module('townBookDirectives', []);
 
 townBookDirectives.directive('myFirstDirective', function() {
     // return the directive link function.
-    return function() {
+    return {
+    	scope: { mapMode: '=' },
+    	link: function() {
         console.log("directive confirmed.");
-        var width = 1000,
-		    height = 600;
 
+        var color = d3.scale.threshold()
+		    .domain([1, 10, 50, 100, 500, 1000, 2000, 5000])
+		    .range(["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"]);
+
+
+		var width = 1000,
+		    height = 500;
 
 		var projection = d3.geo.mercator()
 		    .center([-72, 42])
@@ -15,26 +22,31 @@ townBookDirectives.directive('myFirstDirective', function() {
 		    .translate([width / 2, height / 2]);
 
 		var path = d3.geo.path()
-		  .projection(projection);
+		    .projection(projection);
 
-		var svg = d3.select("body").append("svg")
+		var svg = d3.select("theMap").append("svg")
 		    .attr("width", width)
-		    .attr("height", height);
+		    .attr("height", height);      
 
-		var tooltip = d3.select("body").append("div")
-		    .attr("class", "tooltip");
+		d3.json("MA_Towns_Topo.json", function(error, ma) {
+		  svg.selectAll(".town")
+		    .data(topojson.feature(ma, ma.objects.MA_Towns).features)
+		  .enter().append("path")
+		    //.attr("class", function(d) { return "town " + d.properties.TOWN; })
+		    .attr("class", function(d) { return "town " + d.properties.TOWN; })
+		    .style("fill", function(d) { return color(d.properties.POP2010 / d.properties.SHAPE_AREA * 2.58999e6); })
+		    .attr("title", function(d) { return d.properties.TOWN; })
+		    .attr("d", path);  
 
-
-		d3.json("matopo3.json", function(error, mass) {
-		  svg.selectAll(".subunit")
-		      .data(topojson.feature(mass, mass.objects.ma).features)
-		    .enter().append("path")
-		      .attr("class", function(d) { return "subunit"; })
-		      .attr("title", function(d) { return d.id; })
-		      .attr("d", path);
+		  svg.append("path")
+		      .datum(topojson.mesh(ma, ma.objects.MA_Towns, function(a, b) { return a !== b; }))
+		      .attr("class", "tract-border")
+		      .attr("d", path);  
 		});
 
-
+		//console.log(d3.select(".HINGHAM").enter().d.properties.SHAPE_AREA);
+		//d3.select(".HINGHAM").attr("title", "selectify!");
 		
 		}
+	}	
 });
