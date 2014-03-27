@@ -7,10 +7,13 @@ townBookDirectives.directive('myFirstDirective', function() {
     	link: function() {
         console.log("directive confirmed.");
 
-        var color = d3.scale.threshold()
-		    .domain([1, 10, 50, 100, 500, 1000, 2000, 5000])
-		    .range(["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"]);
-
+        /*var color = d3.scale.threshold()
+            .domain([1, 2, 3, 4, 5])
+            .range(["#ddc", "#cdd", "#cdc", "#dcd","ddc"]);
+		*/
+		var color = d3.scale.threshold()
+	        .domain([1, 2, 3, 4, 5, 6, 7, 8])
+	        .range(['#4628e8','#4628e8', '#228dea', '#1cecbc', '#16ee27', '#9af00f', '#f3ab09', '#f50202']);
 
 		var width = 1000,
 		    height = 500;
@@ -28,13 +31,13 @@ townBookDirectives.directive('myFirstDirective', function() {
 		    .attr("width", width)
 		    .attr("height", height);      
 
-		d3.json("MA_Towns_Topo.json", function(error, ma) {
+		d3.json("MA_Topo_Properties.json", function(error, ma) {
 		  svg.selectAll(".town")
 		    .data(topojson.feature(ma, ma.objects.MA_Towns).features)
 		  .enter().append("path")
 		    //.attr("class", function(d) { return "town " + d.properties.TOWN; })
 		    .attr("class", function(d) { return "town " + d.properties.TOWN; })
-		    .style("fill", function(d) { return color(d.properties.POP2010 / d.properties.SHAPE_AREA * 2.58999e6); })
+		    .style("fill", function(d) { return color(d.properties.victory_district); })
 		    .attr("title", function(d) { return d.properties.TOWN; })
 		    .attr("d", path);  
 

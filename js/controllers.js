@@ -13,12 +13,78 @@ townBookControllers.controller('TownListCtrl', ['$scope', '$http',
   	$scope.comments = [];
 
     $scope.$watch("orderProp", function() {
-      console.log("orderprop changed to" + $scope.orderProp);
-      d3.selectAll(".town")
-        .style("fill",'#222')
-        .attr("class", function(d) { 
-          console.log(d.properties.TOWN);
-          return "town " + d.properties.TOWN; });
+      console.log("orderprop changed to " + $scope.orderProp);
+      switch($scope.orderProp) {
+        case "name":
+          var color = d3.scale.threshold()
+            .domain([0, 1, 2, 3, 4, 5, 6, 7])
+            .range(['#4628e8','#4628e8', '#228dea', '#1cecbc', '#16ee27', '#9af00f', '#f3ab09', '#f50202']);
+           d3.selectAll(".town")
+            .style("fill", function(d) { return color(d.properties.victory_district); });
+          break;
+
+        case "population":
+          var color = d3.scale.threshold()
+            .domain([1, 10, 50, 100, 500, 1000, 2000, 5000])
+            .range(["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"]);
+           d3.selectAll(".town")
+            .style("fill", function(d) { return color(d.properties.POP2010 / d.properties.SHAPE_AREA * 2.58999e6); });
+          break;
+
+        case "percent_registered_unenrolled":
+          var color = d3.scale.threshold()
+            .domain([10, 20, 30, 40, 50, 60, 70, 80])
+            .range(["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"]);
+           d3.selectAll(".town")
+            .style("fill", function(d) { return color(d.properties.p_unenrolled); });
+          break;  
+
+        case "percent_registered_republicans":
+          var color = d3.scale.threshold()
+            .domain([3, 6, 12, 15, 18, 21, 24, 27])
+            .range(["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"]);
+           d3.selectAll(".town")
+            .style("fill", function(d) { return color(d.properties.p_republican); });
+          break;    
+
+        case "unemployment_percentage":
+          var color = d3.scale.threshold()
+            .domain([1,2,3, 4,5, 6,7, 8,9, 10])
+            .range(['#E1E4F7', '#E5E6F9', '#CCCEF4', '#B2B6EF', '#999DEA', '#7F85E5', '#666DE0', '#4C54DB', '#333CD6', '#1924D1', '#000CCC']);
+           // .domain([2, 4, 6, 8, 10])
+           // .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+      
+           d3.selectAll(".town")
+            .style("fill", function(d) { return color(d.properties.unemployment_percentage); });
+          break;    
+
+        case "delta_local_aid_percentage":
+          var color = d3.scale.threshold()
+            .domain([10,20,30, 40,50, 60,70, 80,90, 100])
+            .range(['#E1E4F7', '#E5E6F9', '#CCCEF4', '#B2B6EF', '#999DEA', '#7F85E5', '#666DE0', '#4C54DB', '#333CD6', '#1924D1', '#000CCC']);
+          
+           d3.selectAll(".town")
+            .style("fill", function(d) { return color(Math.abs(d.properties.delta_local_aid_per_capita)); });
+          break;   
+
+        case "local_aid_2013":
+          var color = d3.scale.threshold()
+            .domain([20, 40, 60, 80, 100, 120, 140, 160, 180, 200])
+            .range(['#E1E4F7', '#E5E6F9', '#CCCEF4', '#B2B6EF', '#999DEA', '#7F85E5', '#666DE0', '#4C54DB', '#333CD6', '#1924D1', '#000CCC']);
+          
+           d3.selectAll(".town")
+            .style("fill", function(d) { return color(Math.abs(d.properties.local_aid_2013/d.properties.POP2010)); });
+          break;       
+
+        default:
+          var color = d3.scale.threshold()
+            .domain([1, 2, 3, 4, 5])
+            .range(["#ddc", "#cdd", "#cdc", "#dcd","ddc"]);
+           d3.selectAll(".town")
+            .style("fill", function(d) { return color(d.properties.FOURCOLOR); });
+          break;
+      }
+      
 
     }); 
 	
