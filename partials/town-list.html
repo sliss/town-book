@@ -3,9 +3,12 @@
   <theMap>
       <div my-first-directive></div>
   </theMap>
-  <div results-chart></div>
+  
+    <legendBoxes></legendBoxes>
+    <legendLabels></legendLabels>
+  
  
-	<br/>Massachusetts Town Compendium
+	<br/>MA 351 Town Compendium
   <br/>
  <a href="http://stevenliss.com"><img class="logo" src="sbl.jpg" width="65px" height="auto"></a>
  </div>
@@ -88,6 +91,7 @@
         </div> 
 
         <ul ng-switch-when="p_participation" >
+          <p class="asterisk">As a percentage of registered voters (2010)</p>
       <li ng-repeat="town in towns | searchName:query | orderBy:orderProp:true">
         <p class="dynamic">
                 <span class="town_name"><a href="#/towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.p_participation | number:1}}% </span>
@@ -120,6 +124,7 @@
         </ul>
         
         <ul ng-switch-when="percent_registered_republicans" >
+          <p class="asterisk">Map shows scale of 0% to 25%</p>
 			<li ng-repeat="town in towns | searchName:query | orderBy:orderProp:true">
 				<p class="dynamic">
             		<span class="town_name"><a href="#/towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.percent_registered_republicans | number:1}}% </span>

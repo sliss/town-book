@@ -1,1 +1,77 @@
-{"n_unenrolled": 8714, "victory_district": 4, "p_unenrolled": 60.52229476, "r_deviance_sigma": -0.351334643, "image_link": "http://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Acton_ma_highlight.png/250px-Acton_ma_highlight.png", "delta_local_aid_percentage": -41.25272744, "state_senator": "James B. Eldridge ( D )", "total_votes": 9234, "region_office_address": "227 Chelmsford Street", "py/object": "__main__.Town", "established": 1735, "votes": {"Patrick": 5315, "Baker": 3473, "Total": 9234, "Stein": 113, "Cahill": 333}, "n_green": 16, "d_deviance": 12.51734364, "n_republican": 1594, "region_office": "Chelmsford Office", "p_baker": 37.61100282, "registered_voters": {"Unenrolled": 8714, "Green-Rainbow": 16, "Republican": 1594, "Democrat": 4040, "Total": 14398}, "elected_officials": {}, "local_aid_2013": 1183155.0, "papers": {"Acton Beacon": "http://acton.wickedlocal.com/"}, "p_patrick": 57.55902101, "media_market": "Boston", "leader": "Mayor: N/A", "delta_local_aid_per_capita": -32.75826702, "p_participation": 64.13390748715099, "unemployment_difference_from_MA_average": -2.3, "staffer_phone": "(774) 364-2035", "unemployment_total": 552, "p_democrat": 28.0594527, "registered_percentages": {"% Green-Rainbow": 0.111126545, "% Democrat": 28.0594527, "% Republican": 11.07098208, "% Unenrolled": 60.52229476}, "percent_registered_republicans": 11.07098208, "r_deviance": 19.83960833, "percent_registered_unenrolled": 60.52229476, "federal_reps": "Niki Tsongas (D)", "population": 21924, "county": "Middlesex", "slug": "acton", "p_green": 0.111126545, "region_staffer": "Chris Lane", "name": "ACTON", "gov_type": "open town meeting", "d_deviance_sigma": 1.015656083, "p_republican": 11.07098208, "staffer_email": "Chris@massvictory.com", "delta_local_aid": -718192.2461, "vote_percentages": {"% Patrick": 57.55902101, "% Cahill": 3.606237817, "% Baker": 37.61100282, "% Stein": 1.223738358}, "n_democrat": 4040, "unemployment_percentage": 4.4, "local_aid_2008": 1901347.246, "region": "4"}
+{
+    "county": "Middlesex", 
+    "d_deviance": 12.51734364, 
+    "d_deviance_sigma": 1.0156560830000001, 
+    "delta_local_aid": -718192.24609999999, 
+    "delta_local_aid_per_capita": -32.758267019999998, 
+    "delta_local_aid_percentage": -41.252727440000001, 
+    "elected_officials": {}, 
+    "established": 1735, 
+    "federal_reps": "Niki Tsongas (D)", 
+    "gov_type": "open town meeting", 
+    "image_link": "http://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Acton_ma_highlight.png/250px-Acton_ma_highlight.png", 
+    "leader": "Mayor: N/A", 
+    "local_aid_2008": 1901347.246, 
+    "local_aid_2013": 1183155.0, 
+    "media_market": "Boston", 
+    "n_democrat": 4040, 
+    "n_green": 16, 
+    "n_republican": 1594, 
+    "n_unenrolled": 8714, 
+    "name": "ACTON", 
+    "p_baker": 37.611002820000003, 
+    "p_democrat": 28.059452700000001, 
+    "p_green": 0.11112654499999999, 
+    "p_participation": 64.133907487150992, 
+    "p_patrick": 57.559021010000002, 
+    "p_republican": 11.07098208, 
+    "p_unenrolled": 60.522294760000001, 
+    "papers": {
+        "Acton Beacon": "http://acton.wickedlocal.com/"
+    }, 
+    "percent_registered_republicans": 11.07098208, 
+    "percent_registered_unenrolled": 60.522294760000001, 
+    "population": 21924, 
+    "py/object": "__main__.Town", 
+    "r_deviance": 19.839608330000001, 
+    "r_deviance_sigma": -0.351334643, 
+    "region": "4", 
+    "region_office": "Chelmsford Office", 
+    "region_office_address": "227 Chelmsford Street", 
+    "region_staffer": "Chris Lane", 
+    "registered_percentages": {
+        "% Democrat": 28.059452700000001, 
+        "% Green-Rainbow": 0.11112654499999999, 
+        "% Republican": 11.07098208, 
+        "% Unenrolled": 60.522294760000001
+    }, 
+    "registered_voters": {
+        "Democrat": 4040, 
+        "Green-Rainbow": 16, 
+        "Republican": 1594, 
+        "Total": 14398, 
+        "Unenrolled": 8714
+    }, 
+    "slug": "acton", 
+    "staffer_email": "Chris@massvictory.com", 
+    "staffer_phone": "(774) 364-2035", 
+    "state_senator": "James B. Eldridge ( D )", 
+    "total_votes": 9234, 
+    "unemployment_difference_from_MA_average": -2.2999999999999998, 
+    "unemployment_percentage": 4.4000000000000004, 
+    "unemployment_total": 552, 
+    "victory_district": 4, 
+    "vote_percentages": {
+        "% Baker": 37.611002820000003, 
+        "% Cahill": 3.6062378169999998, 
+        "% Patrick": 57.559021010000002, 
+        "% Stein": 1.2237383580000001
+    }, 
+    "votes": {
+        "Baker": 3473, 
+        "Cahill": 333, 
+        "Patrick": 5315, 
+        "Stein": 113, 
+        "Total": 9234
+    }
+}

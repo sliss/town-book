@@ -31,20 +31,49 @@ townBookDirectives.directive('myFirstDirective', function() {
 			    .attr("width", width)
 			    .attr("height", height)
 			    .attr("xmlns","http://www.w3.org/2000/svg")
-			    .attr("version",1.1);   
+			    .attr("version",1.1);  
+
+/*
+			var legend = d3.select("legendBoxes").append("svg")
+				.attr("width", 210)
+			    .attr("height", 30); 
+
+			var legend_labels = d3.select("legendLabels").append("svg")
+				.attr("width", 240)
+			    .attr("height", 25);     
+
+			legend.selectAll("legend_box").data([1, 2, 3, 4, 5, 6, 7]).enter()
+			    .append('rect')
+			    	.attr('width','30')
+			    	.attr('height','30')
+			    	.style('fill',function(d) { return color(d); })  
+			    	.attr('x', function(d, i) {return (i*30)})
+			    	.attr('y', 0) 
+			    ; 
+
+			legend_labels.selectAll("legend_label").data([1, 2, 3, 4, 5, 6, 7]).enter()
+				.append('text')
+		        	.text(function (d) {return d})
+		        	.style('fill','#333')
+		        	.style("text-anchor", "left")
+		        	.attr('x', function(d, i) {return (22+i*30)})
+			    	.attr('y', 25)    
+			    ;  */   
 			     
 
 			d3.json("MA_Topo_Properties.json", function(error, ma) {
 			  svg.selectAll(".town")
 			    .data(topojson.feature(ma, ma.objects.MA_Towns).features)
-			  .enter().append("path")
+			  .enter()
+			  .append("a")
+			  	.attr("xlink:href", function(d) { return "/town-book/#/towns/" + d.properties.TOWN.toLowerCase(); })
+			  	.attr("title", function(d) { return d.properties.TOWN; })
+			  .append("path")
 			    //.attr("class", function(d) { return "town " + d.properties.TOWN; })
 			    .attr("class", function(d) { return "town " + d.properties.TOWN; })
 			    .style("fill", function(d) { return color(d.properties.victory_district); })
-			    .attr("title", function(d) { return d.properties.TOWN; })
-			    .attr("d", path) 
-			  .append("svg:a")
-			  	.attr("xlink:href", "stevenliss.com");  
+			    .attr("d", path);
+
 			     
 
 			  
@@ -53,7 +82,8 @@ townBookDirectives.directive('myFirstDirective', function() {
 			      .datum(topojson.mesh(ma, ma.objects.MA_Towns, function(a, b) { return a !== b; }))
 			      .attr("class", "tract-border")
 			      .attr("d", path);  
-			});
+		
+					});
 
 			//console.log(d3.select(".HINGHAM").enter().d.properties.SHAPE_AREA);
 			//d3.select(".HINGHAM").attr("title", "selectify!");
@@ -65,53 +95,22 @@ townBookDirectives.directive('myFirstDirective', function() {
 townBookDirectives.directive('resultsChart', function() {
     // return the directive link function.
     return {
-    	scope: { mapMode: '=' },
+    	scope: {},
     	link: function() {
 	        console.log("chart directive confirmed.");
+	        
+	        //var currentTown="uninit'd";
+	        //console.log("scope says " + scope.slugger);
+	        /*var currentTown = attrs.mySlug;
+	        
+			
 
-	        var width = 960,
-		    height = 500,
-		    radius = Math.min(width, height) / 2;
-
-			var color = d3.scale.ordinal()
-			    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
-			var arc = d3.svg.arc()
-			    .outerRadius(radius - 10)
-			    .innerRadius(0);
-
-			var pie = d3.layout.pie()
-			    .sort(null)
-			    .value(function(d) { return d.population; });
-
-			var svg = d3.select("body").append("svg")
-			    .attr("width", width)
-			    .attr("height", height)
-			  .append("g")
-			    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-			d3.csv("test.csv", function(error, data) {
-
-			  data.forEach(function(d) {
-			    d.population = +d.population;
-			  });
-
-			  var g = svg.selectAll(".arc")
-			      .data(pie(data))
-			    .enter().append("g")
-			      .attr("class", "arc");
-/*
-			  g.append("path")
-			      .attr("d", arc)
-			      .style("fill", function(d) { return color(d.data.age); });
-
-			  g.append("text")
-			      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-			      .attr("dy", ".35em")
-			      .style("text-anchor", "middle")
-			      .text(function(d) { return d.data.age; });*/
-
-			});
+	        attrs.$observe('mySlug', function() {
+		        console.log(attrs.mySlug);
+		        currentTown= attrs.mySlug;
+		      });*/
+	        //console.log("town is " + currentTown);
+	        
 
 		}
 	}	

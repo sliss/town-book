@@ -29,6 +29,14 @@ body {background-color:#D3EDF5 !important;}
 	margin-left:100px;
 }
 
+legendLabels,legendBoxes {
+	display: block;
+	margin:auto;
+	position:relative;
+	left:-150px;
+	top:-150px;
+}
+
 table {
 	background-color:#F7F7F7 !important;	
 	

@@ -25,66 +25,74 @@
  </div><!-- end row -->
  <br/><br/><br/><br/><br/>
  
- <h2>Party Enrollment Breakdown (2012)</h2>
- 
-<table class="table table-bordered"> 
-	 <tr>
-		 <th>
-		 </th>
-		 <th>Total</th>
-		 <th>Republican</th>
-		 <th>Democrat</th>
-		 <th>Green-Rainbow</th>
-		 <th>Unenrolled</th>
-	 </tr>
-	 <tr>
-		 <td>Enrolled</td>
-		 <td>{{town.registered_voters["Total"] | number}}</td>
-		 <td>{{town.registered_voters["Republican"] | number}}</td>
-		 <td>{{town.registered_voters["Democrat"] | number}}</td>
-		 <td>{{town.registered_voters["Green-Rainbow"] | number}}</td>
-		 <td>{{town.registered_voters["Unenrolled"] | number}}</td>
-	 </tr>
-	 <tr>
-		 <td>%</td>
-		 <td>   -   </td>
-		 <td>{{town.registered_percentages["% Republican"] | number:1}}%</td>
-		 <td>{{town.registered_percentages["% Democrat"] | number:1}}%</td>
-		 <td>{{town.registered_percentages["% Green-Rainbow"] | number:1}}%</td>
-		 <td>{{town.registered_percentages["% Unenrolled"] | number:1}}%</td>
-
-
-	 </tr>
- </table>
- 
- <h2>2010 Election Results</h2>
+ <h2>2010 Election Results ({{town.p_participation | number:1}}% turnout)</h2>
  <table class="table table-bordered"> 
 	 <tr>
+	 	
+		 
 		 <th></th>
-		 <th>Votes</th>
 		 <th>Baker</th>
 		 <th>Patrick</th>
 		 <th>Cahill</th>
 		 <th>Stein</th>
+		 <th>Total</th>
+		 <th class="results"  rowspan="3" max-width:250px></th>
 	 </tr>
 	 <tr>
-		 <td>Enrolled</td>
-		 <td>{{town.votes["Total"] | number}}</td>
+		 <th>Votes</th>
 		 <td>{{town.votes["Baker"] | number}}</td>
 		 <td>{{town.votes["Patrick"] | number}}</td>
 		 <td>{{town.votes["Cahill"] | number}}</td>
 		 <td>{{town.votes["Stein"] | number}}</td> 
+		 <td>{{town.votes["Total"] | number}}</td>
 	 </tr>
 	 <tr>
-		 <td>%</td>
-		 <td>   -   </td>
+		 <th>%</th>
 		 <td>{{town.vote_percentages["% Baker"] | number:1}}%</td>
 		 <td>{{town.vote_percentages["% Patrick"] | number:1}}%</td>
 		 <td>{{town.vote_percentages["% Cahill"] | number:1}}%</td>
 		 <td>{{town.vote_percentages["% Stein"] | number:1}}%</td>
+		 <td>   -   </td>
 
 	 </tr>
  </table>
+
+ <h2>Party Enrollment Breakdown (2012)</h2>
+ 
+<table class="table table-bordered"> 
+	 <tr>
+		 <!--<th class="enrollment" rowspan="3"></th>-->
+
+		 
+		 <th></th>
+		 <th>Republican</th>
+		 <th>Democrat</th>
+		 <th>Green-Rainbow</th>
+		 <th>Unenrolled</th>
+		 <th>Total</th>
+		 
+	 </tr>
+	 <tr>
+		 <th>Enrolled</th>
+		 <td>{{town.registered_voters["Republican"] | number}}</td>
+		 <td>{{town.registered_voters["Democrat"] | number}}</td>
+		 <td>{{town.registered_voters["Green-Rainbow"] | number}}</td>
+		 <td>{{town.registered_voters["Unenrolled"] | number}}</td>
+		 <td>{{town.registered_voters["Total"] | number}}</td>
+	 </tr>
+	 <tr>
+		 <th>%</th>
+		 
+		 <td>{{town.registered_percentages["% Republican"] | number:1}}%</td>
+		 <td>{{town.registered_percentages["% Democrat"] | number:1}}%</td>
+		 <td>{{town.registered_percentages["% Green-Rainbow"] | number:1}}%</td>
+		 <td>{{town.registered_percentages["% Unenrolled"] | number:1}}%</td>
+		 <td>   -   </td>
+
+
+	 </tr>
+ </table>
+ 
  
  <h2>Unemployment</h2>
  <p>Dec. 2013 unemployment rate: {{town.unemployment_percentage | number:1}}%  (MA average is 6.7%)</p>

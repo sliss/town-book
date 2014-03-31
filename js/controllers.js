@@ -14,6 +14,9 @@ townBookControllers.controller('TownListCtrl', ['$scope', '$http',
 
     $scope.$watch("orderProp", function() {
       console.log("orderprop changed to " + $scope.orderProp);
+      
+
+
       switch($scope.orderProp) {
         case "name":
           var color = d3.scale.threshold()
@@ -32,11 +35,43 @@ townBookControllers.controller('TownListCtrl', ['$scope', '$http',
           break;
 
         case "r_deviance_sigma":
+          var data_domain = [0, 1, 1.5];
           var color = d3.scale.threshold()
-            .domain([-50, 1, 1.5])
+            .domain(data_domain)
             .range(['#1D21F5','#6520A5','#AD1F56','#F51F07']);
            d3.selectAll(".town")
             .style("fill", function(d) { return color(d.properties.sigma_r_deviance); });
+/*
+          var legend_width;
+          var box_size = 30;
+
+          var legend = d3.select("legendBoxes").append("svg")
+            .attr("width", 210)
+            .attr("height", box_size); 
+
+          var legend_labels = d3.select("legendLabels").append("svg")
+            .attr("width", 231)
+            .attr("height", 25);     
+
+          legend.selectAll("legend_box").data(data_domain).enter()
+              .append('rect')
+                .attr('width',box_size)
+                .attr('height',box_size)
+                .style('fill',function(d) { return color(d); })  
+                .attr('x', function(d, i) {return (i*box_size)})
+                .attr('y', 0) 
+              ; 
+              
+
+          legend_labels.selectAll("legend_label").data(data_domain).enter()
+            .append('text')
+                  .text(function (d) {return d})
+                  .style('fill','#333')
+                  .style("text-anchor", "left")
+                  .attr('font-size','10px')
+                  .attr('x', function(d, i) {return (20+i*box_size)})
+                .attr('y', 25)    
+          ; */  
           break; 
 
         case "r_deviance":
@@ -64,17 +99,49 @@ townBookControllers.controller('TownListCtrl', ['$scope', '$http',
           break;  
 
         case "percent_registered_republicans":
+          var data_domain = [3, 6, 12, 15, 18, 21, 24, 27]
           var color = d3.scale.threshold()
-            .domain([3, 6, 12, 15, 18, 21, 24, 27])
+            .domain(data_domain)
             .range(["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"]);
            d3.selectAll(".town")
             .style("fill", function(d) { return color(d.properties.p_republican); });
+/*
+          var legend_width;
+          var box_size = 30;
+
+          var legend = d3.select("legendBoxes").append("svg")
+            .attr("width", 210)
+            .attr("height", box_size); 
+
+          var legend_labels = d3.select("legendLabels").append("svg")
+            .attr("width", 231)
+            .attr("height", 25);     
+
+          legend.selectAll("legend_box").data(data_domain).enter()
+              .append('rect')
+                .attr('width',box_size)
+                .attr('height',box_size)
+                .style('fill',function(d) { return color(d); })  
+                .attr('x', function(d, i) {return (i*box_size)})
+                .attr('y', 0) 
+              ; 
+
+
+          legend_labels.selectAll("legend_label").data(data_domain).enter()
+            .append('text')
+                  .text(function (d) {return d + '%'})
+                  .style('fill','#333')
+                  .style("text-anchor", "left")
+                  .attr('font-size','10px')
+                  .attr('x', function(d, i) {return (20+i*box_size)})
+                .attr('y', 25)    
+          ; */ 
           break;  
 
         case "p_baker":
           var color = d3.scale.threshold()
             .domain([10, 20, 30, 40, 50, 60,70, 80, 90, 100])
-            .range(['#E1E4F7', '#E5E6F9', '#CCCEF4', '#B2B6EF', '#999DEA', '#7F85E5', '#666DE0', '#4C54DB', '#333CD6', '#1924D1', '#000CCC']);
+            .range(["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"]);
            d3.selectAll(".town")
             .style("fill", function(d) { return color(d.properties.p_baker); });
           break;    
@@ -145,5 +212,78 @@ townBookControllers.controller('TownDetailCtrl', ['$scope', '$routeParams', '$ht
     	$scope.comment = localStorage.getItem(slug);
     else
     	$scope.comment = '';
+
+    var width = 200,
+        height = 200,
+        radius = Math.min(width, height) / 2;
+
+      var color = d3.scale.ordinal()
+          .range(["#D61F29", "#3B20D3", "#79208F"]);
+
+      var arc = d3.svg.arc()
+          .outerRadius(radius - 10)
+          .innerRadius(0);
+
+      var pie_results = d3.layout.pie()
+          .sort(null)
+          .value(function(d) { return d.numVotes; });
+
+      var svg_results = d3.select(".results").append("svg")
+          .attr("width", width)
+          .attr("height", height)
+        .append("g")
+          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+         
+
+      d3.csv('votes/' + slug + 'votes.csv', function(error, data) {
+        data.forEach(function(d) {
+          d.numVotes = +d.numVotes;
+        });
+
+        var g = svg_results.selectAll("arc_results")
+            .data(pie_results(data))
+          .enter().append("g")
+            .attr("class", "arc_results");
+
+        g.append("path")
+            .attr("d", arc)
+            .style("fill", function(d) { return color(d.data.candidate); });
+
+        g.append("text")
+          .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+          .attr("dy", ".35em")
+          .style("text-anchor", "middle")
+          .style("fill", "#FFF")
+          .text(function(d) { return d.data.candidate; });  
+      });
+
+      //*****************************
+/*
+      var svg_enrollment = d3.select(".enrollment").append("svg")
+          .attr("width", width)
+          .attr("height", height)
+        .append("g")
+          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+      d3.csv('votes/' + slug + 'votes.csv', function(error, data) {
+        data.forEach(function(d) {
+          d.numVotes = +d.numVotes;
+        });
+
+        var g = svg_results.selectAll("arc_results")
+            .data(pie_results(data))
+          .enter().append("g")
+            .attr("class", "arc_results");
+
+        g.append("path")
+            .attr("d", arc)
+            .style("fill", function(d) { return color(d.data.candidate); });
+
+        g.append("text")
+          .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+          .attr("dy", ".35em")
+          .style("text-anchor", "middle")
+          .text(function(d) { return "dawg"; });  
+      }); */   
 
   }]);
