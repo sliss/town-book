@@ -10,12 +10,10 @@
  	 <h1>{{town.name | uppercase}}</h1>
  <div id="local_container">
 	 <br/>
-	 <p>Victory District: {{town.victory_district}}</p>
 	 <p>County: {{town.county}}</p>
-	 <p>Media market: {{town.media_market}}</p>
 	 <p>Population: {{town.population | number}}</p>
 	 <p>Local government: {{town.gov_type}}</p>
-	 <p>Mayor: {{town.mayor}}
+	 <p>{{town.leader}}
 	 <p>Federal reps: {{town.federal_reps}}
 	 <p>State senator: {{town.state_senator}}</p>
 	 <p>Established: {{town.established | number}} ({{2014 - town.established}} years old)</p>
@@ -107,6 +105,30 @@
 		 <td>-${{-1 * town.delta_local_aid | number:0}}</td>
 		 <td>{{town.delta_local_aid_percentage | number:1}}%</td>
 		 <td>-${{-1 * town.delta_local_aid_per_capita | number:2}}</td>
+	 </tr>
+ </table>
+
+<h2>Media ({{town.media_market}} media market)</h2>
+ <table class="table table-bordered"> 
+	 <tr>
+		 <th>Newspapers</th>
+	 </tr>	 
+		 <tr ng-repeat="(key,value) in town.papers">
+	 	<td><a href="{{value}}">{{key}}</a></td>
+	 </tr>
+ </table>
+
+ <h2>Campaign (Region {{town.region}})</h2>
+ <table class="table table-bordered"> 
+	 <tr>
+		 <th>Staffer</th>
+		 <td><a href="mailto:{{town.staffer_email}}">{{town.region_staffer}}</a></td>
+		 <td>{{town.staffer_phone}}</td>
+	 </tr>
+	 <tr>
+		 <th>Office</th>
+		 <td>{{town.region_office}}</td>
+		 <td>{{town.region_office_address}}</td>
 	 </tr>
  </table>
  

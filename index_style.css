@@ -12,6 +12,16 @@
 	margin-bottom:15px;
 }
 
+#heading img, #heading a {
+	text-align: center;
+	margin-top:15px;
+
+}
+
+.logo {
+	text-align: center;
+}
+
 .stat_display {
 	text-align:right;
 	float:right;
@@ -48,9 +58,10 @@ section, footer, header, aside, nav{
 
 	box-shadow: 0 1px 1px #ccc;
 	border-radius: 2px;
-	width: 400px;
+	width: 66%;
 	padding: 14px;
 	margin: 45px auto 20px;
+	margin-top:10px;
 	position:relative;
 }
 
@@ -92,15 +103,23 @@ section, footer, header, aside, nav{
 	text-indent: 40px;
 }
 
+.asterisk {
+	font-size: 12px;
+	color:gray;
+	text-align: center;
+
+}
+
 .big_list ul{
 	list-style: none;
-	width: 600px;
+	width: 95%;
+	max-width:600px;
 	margin: 0 auto;
 	text-align: left;
 	border-color:#D3EDF5;
 	border-style:solid;
 	border-width:10px;
-	font-size:20px;
+	font-size:18px;
 }
 
 .big_list ul li{
@@ -117,7 +136,7 @@ section, footer, header, aside, nav{
 }
 
 .big_list ul li p{
-	margin-left: 75px;
+	margin-left: 16%px;
 	font-weight: bold;
 	padding-top: 12px;
 	color:#6e7a7f;

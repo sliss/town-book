@@ -2,13 +2,13 @@ body {background-color:#D3EDF5 !important;}
 
 
 .container {
-	padding:50px;
+	padding-bottom:10px;
+	padding-top:10px;
 	background-color:#FFFFFF;
 	border:inset;
 	border-color:#6457F2;
 	border-width:10px;
 }
-
 
 
 #index_link {
@@ -38,7 +38,6 @@ table {
 	display:none;
 }
 
-svg{}
   .body{background-color:#B9CEFA;}
   .town:hover{ fill: yellow !important; }
 
