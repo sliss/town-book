@@ -90,14 +90,16 @@
         </ul> 
         </div> 
 
-        <ul ng-switch-when="p_participation" >
-          <p class="asterisk">As a percentage of registered voters (2010)</p>
+        <div ng-switch-when="p_participation" >
+      <p class="asterisk">As a percentage of registered voters (2010)</p>
+        <ul >
       <li ng-repeat="town in towns | searchName:query | orderBy:orderProp:true">
         <p class="dynamic">
                 <span class="town_name"><a href="#/towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.p_participation | number:1}}% </span>
             </p>
           </li>
         </ul>
+      </div>
 
         <ul ng-switch-when="unemployment_percentage" >
 			<li ng-repeat="town in towns | searchName:query | orderBy:orderProp:true">
@@ -107,13 +109,16 @@
           </li>
         </ul>
         
-        <ul ng-switch-when="delta_local_aid_percentage" >
+        <div ng-switch-when="delta_local_aid_percentage">
+        <ul>
+                <p class="asterisk">Decrease per capita</p>
 			<li ng-repeat="town in towns | searchName:query | orderBy:orderProp:false">
 				<p class="dynamic">
             		<span class="town_name"><a href="#/towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.delta_local_aid_percentage | number:1}}% </span>
         		</p>
           </li>
         </ul>
+      </div>
         
         <ul ng-switch-when="local_aid_2013" >
 			<li ng-repeat="town in towns | searchName:query | orderBy:orderProp:true">
@@ -124,7 +129,6 @@
         </ul>
         
         <ul ng-switch-when="percent_registered_republicans" >
-          <p class="asterisk">Map shows scale of 0% to 25%</p>
 			<li ng-repeat="town in towns | searchName:query | orderBy:orderProp:true">
 				<p class="dynamic">
             		<span class="town_name"><a href="#/towns/{{town.slug}}.html">{{town.name | uppercase}}</a></span> <span class="stat_display">{{town.percent_registered_republicans | number:1}}% </span>

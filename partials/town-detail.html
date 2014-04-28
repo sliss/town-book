@@ -16,6 +16,7 @@
 	 <p>{{town.leader}}
 	 <p>Federal reps: {{town.federal_reps}}
 	 <p>State senator: {{town.state_senator}}</p>
+	 <p>State representative: {{town.state_rep}}</p>
 	 <p>Established: {{town.established | number}} ({{2014 - town.established}} years old)</p>
  </div>
  </div>
@@ -122,7 +123,7 @@
 		 <th>Newspapers</th>
 	 </tr>	 
 		 <tr ng-repeat="(key,value) in town.papers">
-	 	<td><a href="{{value}}">{{key}}</a></td>
+	 	<td><a href="{{value}}" target="_blank">{{key}}</a></td>
 	 </tr>
  </table>
 
@@ -137,6 +138,20 @@
 		 <th>Office</th>
 		 <td>{{town.region_office}}</td>
 		 <td>{{town.region_office_address}}</td>
+	 </tr>
+ </table>
+
+ <h2>State Committee Members</h2>
+ <table class="table table-bordered"> 
+	 <tr>
+		 <th>State Committeeman</th>
+		 <td><a href="mailto:{{town.SCM_email}}">{{town.SCM_name}}</a></td>
+		 <td>{{town.SCM_phone}}</td>
+	 </tr>
+	 <tr>
+		 <th>State Committeewoman</th>
+		<td><a href="mailto:{{town.SCW_email}}">{{town.SCW_name}}</a></td>
+		 <td>{{town.SCW_phone}}</td>
 	 </tr>
  </table>
  
